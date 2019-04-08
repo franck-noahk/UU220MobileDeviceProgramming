@@ -42,6 +42,10 @@ public class CrimeFragment extends Fragment {
 			}
 		});
 
+		mDateButton = (Button) v.findViewById(R.id.crime_date);
+		mDateButton.setText(mCrime.getDate().toString());
+		mDateButton.setEnabled(false);
+
 		return v;
 	}
 
