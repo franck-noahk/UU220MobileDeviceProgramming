@@ -23,7 +23,12 @@ public class CrimeListFragment extends Fragment {
 
 		return view;
 	}
-
+	/*
+	inflate list_item_crime.xml, then immediately pass it into super(). View
+	Holder's constructor. THe bvase ViewHolder class will then hold onto the
+	fragment_crime_list.xml view hierarchy. If you need that view hierarchy,
+	you can find it in ViewHolder's itemView field.
+	 */
 	private class CrimeHolder extends RecyclerView.ViewHolder{
 		public CrimeHolder(LayoutInflater inflater, ViewGroup parent){
 			super(inflater.inflate(R.layout.list_item_crime,parent,false));
