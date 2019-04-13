@@ -13,6 +13,7 @@ import java.util.List;
 
 public class CrimeListFragment extends Fragment {
 	private RecyclerView mCrimeRecyclerView;
+	private CrimeAdapter mAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,5 +64,15 @@ public class CrimeListFragment extends Fragment {
 		public int getItemCount() {
 			return mCrimes.size();
 		}
+	}
+
+	//-----------Setting an Adapter-----------
+
+	private void updateUI(){
+		CrimeLab crimeLab = CrimeLab.get(getActivity());
+		List<Crime> crimes = crimeLab.getCrimes();
+
+		mAdapter = new CrimeAdapter(crimes);
+		mCrimeRecyclerView.setAdapter(mAdapter);
 	}
 }
