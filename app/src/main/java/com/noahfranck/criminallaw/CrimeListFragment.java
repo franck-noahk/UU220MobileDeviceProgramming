@@ -14,21 +14,30 @@ import java.util.List;
 public class CrimeListFragment extends Fragment {
 	private RecyclerView mCrimeRecyclerView;
 	private CrimeAdapter mAdapter;
-
+	@NonNull
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState){
-		View view = inflater.inflate(R.layout.activity_crime_list,container,
+		View view = inflater.inflate(R.layout.fragment_crime_list,container,
 				false);
-		mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id
-				.crime_recycler_view);
-		mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager
-				(getActivity()));
+		mCrimeRecyclerView = (RecyclerView) view.findViewById(R.id.crime_recycler_view);
+		mCrimeRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 		updateUI();
 
 		return view;
 	}
+
+	//-----------Setting an Adapter-----------
+
+	private void updateUI(){
+		CrimeLab crimeLab = CrimeLab.get(getActivity());
+		List<Crime> crimes = crimeLab.getCrimes();
+
+		mAdapter = new CrimeAdapter(crimes);
+		mCrimeRecyclerView.setAdapter(mAdapter);
+	}
+
 	/*
 	inflate list_item_crime.xml, then immediately pass it into super(). View
 	Holder's constructor. THe bvase ViewHolder class will then hold onto the
@@ -49,16 +58,16 @@ public class CrimeListFragment extends Fragment {
 			mCrimes = crimes;
 		}
 
-		@NonNull
+
 		@Override
-		public CrimeHolder onCreateViewHolder(@NonNull ViewGroup parent, int
+		public CrimeHolder onCreateViewHolder(ViewGroup parent, int
 				viewType) {
 			LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 			return new CrimeHolder(layoutInflater,parent);
 		}
 
 		@Override
-		public void onBindViewHolder(@NonNull CrimeHolder crimeHolder, int i){
+		public void onBindViewHolder( CrimeHolder crimeHolder, int i){
 
 		}
 
@@ -68,13 +77,5 @@ public class CrimeListFragment extends Fragment {
 		}
 	}
 
-	//-----------Setting an Adapter-----------
 
-	private void updateUI(){
-		CrimeLab crimeLab = CrimeLab.get(getActivity());
-		List<Crime> crimes = crimeLab.getCrimes();
-
-		mAdapter = new CrimeAdapter(crimes);
-		mCrimeRecyclerView.setAdapter(mAdapter);
-	}
 }
