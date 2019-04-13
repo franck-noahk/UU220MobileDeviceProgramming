@@ -10,7 +10,7 @@ public class CrimeActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_crime);
+		setContentView(R.layout.activity_fragment);
 
 		FragmentManager fm = getSupportFragmentManager();   //getting a fragment manager
 		/*
@@ -34,7 +34,7 @@ public class CrimeActivity extends AppCompatActivity {
 					.add(R.id.fragment_container, fragment)
 					/*Bread and butter of the transaction, 2 paramiters, container view id and the
 					new CrimeFragment. The view ID is the resource id of the FrameLayout that we
-					defined in activity_crime.xml*/
+					defined in activity_fragmentent.xml*/
 					.commit();
 		}   //The if statement says that We need to create fragment transaction, include one add
 			// operation in it and then commit it
