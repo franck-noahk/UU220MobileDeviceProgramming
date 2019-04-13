@@ -29,6 +29,14 @@ public class CrimeLab {
 	private CrimeLab(Context context){  //private so no other classes can use
 										// this accept for us
 		mCrimes = new ArrayList<>();
+		//fluffing the arraylist with the beginning so I have dummy values to
+		// run.
+		for (int i = 0; i < 100; i++){
+			Crime crime = new Crime();
+			crime.setTitle("Crime #" + i);
+			crime.setSolved(i % 2 == 0);
+			mCrimes.add(crime);
+		}
 	}
 
 	public List<Crime> getCrimes(){
